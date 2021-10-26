@@ -1,0 +1,262 @@
+Exercise 2:  Execute each command and later save each command in a text file.
+
+Task:
+
+1- Type the command whoami
+output- Mitanshi Maheshwari
+
+2- Create a new directory named exercise2
+command- mkdir exercise2
+
+4- list all files, even hidden files (directory should be blank)
+command-  cd exercise2/
+	  ls -a   //this will show all the hidden files
+	  ls -l    //this command will show all the permission regarding to the file
+	  ls -la  //to do both of the the above task together
+
+5- create a new file that contains the calender for this month
+command- cal  //for the calender
+	  cal > cal.txt    //to get the output of cal command in text file
+
+6- list all files again, even hidden files (there should be just one file)
+command- cd exercise2/
+	  touch t1.txt
+	  ls -a
+
+7- Display the entire content of that new file
+command- cat t1.txt
+
+8- Delete the file
+command - rm t1.txt
+
+9- Ask the sysytem when is easter in 2022
+command- ncal -e  //this will show date of easter in current yera
+	  ncal -e 2022   //this will show date of easter in 2022 and even we can change year.
+
+10- Ask the system for today's date 
+command- date
+
+11- Save today's date into a date.txt file
+command- date > date.txt
+
+12- Get yourself out of the exercise2 directory
+command- cd exercise2
+	 cd ..
+
+13- list all files, even hidden files(there should be just one file)
+command- cd exercise2
+	  touch t1.txt
+	  ls -a
+14- Delete the directory 
+command- rm -rf exercise2
+
+Exercise 3: Learn and practice on SSH 
+Task:
+1- What is SSH?
+ans- ssh stands for “Secure Shell”. It is a protocol used to securely connect to a remote server/system. ssh is secure in the sense that it transfers the data in encrypted form between the host and the client.
+ It transfers inputs from the client to the host and relays back the output. ssh runs at TCP/IP port 22.
+
+2- Check if you have SSH on your system
+command- just write 'ssh' to the terminal or write ssh localhost
+
+3- What is SSH agent?
+ans-ssh-agent is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh. It saves you from typing a passphrase every time you connect to a server. It runs in the background on your system, separately from ssh, and it usually starts up the first time you run ssh after a reboot.
+
+The SSH agent keeps private keys safe because of what it doesn’t do:
+
+It doesn’t write any key material to disk.
+It doesn’t allow your private keys to be exported.
+
+4- Check if the SSH agent is running
+ans-if SSH_AUTH_SOCK enviornment variable is defined.
+
+5- Create SSH key using RSA 
+command-ssh-keygen -t rsa
+
+Exercise 3(a):
+Task:
+
+1 -Setup SSH key 
+command-ssh-keygen -t rsa
+	 
+2- Copy and paste the public key to your github account
+command- to get the key just run the above command and then do ls -a and go into the 
+	 .ssh folder then open id_rsa.pub file using vim editor or any other one
+	 then just open your github account and go to settings go into generate key ,then click on add new
+	  then paste it save it .
+3- Push the repo using ssh url
+come back to your terminal and run git remote add origin git@github.com:username/directory_name.git
+git branch main
+git push -u origin main
+
+4- clone the repo using ssh url
+command- git clone git@github.com:username/directory_name.git
+
+
+
+
+
+Exercise 4:  Learn and practice on process-based commands
+
+Task:
+
+1- Run sleep command and put CLI on sleep for 30 seconds
+command-  sleep 30
+	// we can even mension hour, minutes, seconds and years
+	//h-hour, m-minutes, s-seconds
+	//sleep 10h 30m 5s
+
+2- Display your currently active processes
+command- ps
+	// this command will show 4 fields
+	// PID: The process ID is your system’s tracking number for the process. 
+	    The PID is useful when you need to use a command like kill or nice, which take a PID as their input.
+	 //TTY: The controlling terminal associated with the process. 
+	               Processes that do not originate from a controlling terminal and were initiated by the system at boot are displayed with a question mark.
+	//TIME: The CPU usage of the process. Displays the amount of CPU time used by the process. 
+	                 This value is not the run time of the process.
+	//CMD: The name of the command or executable that is running. 
+	                The output only includes the name of the command or executable and does not display any options that were passed in.
+
+3- Display your process using "aux", eg ps aux
+command- ps aux
+	// ps aux displays the most amount of information a user usually needs to understand the current state of their system’s running processes.
+
+4- Kill specific process with its PID
+command- ps //with the help of this command we get the pid
+	 kill pid(2922)
+
+5- Kill the sleep processes
+command- killall sleep
+
+6- List all the background jobs
+command- top //shows all the background processes
+	 htop // same as the top command but interface is user friendly
+	
+7- What is the differnce between "kill-9" and "pkill"?	 
+ans-  The kill command is a very simple wrapper to the kill system call, which knows only about process IDs (PIDs). 
+            pkill and killall are also wrappers to the kill system call, (actually, to the libc library which directly invokes the system call),
+            but can determine the PIDs for you, based on things like, process name, owner of the process, session id, etc.
+
+            How pkill and killall work can be seen using ltrace or strace on them.
+           On Linux, they both read through the /proc filesystem, and for each pid (directory) found, traverses the path in a way to 
+           identify a process by its name or other attributes. How this is done is technically speaking, kernel and system specific. 
+            In general, they read from /proc/<PID>/stat which contains the command name as the 2nd field. For pkill -f and pgrep examine the /cmdline entry for each PID's proc entry.
+
+Exercise 5: Learn and practice some other important commands
+Task:
+1- What is CURL command?
+ans- curl is a command line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP or FILE). 
+ This tool is preferred for automation, since it is designed to work without user interaction. 
+curl can transfer multiple file at once.
+
+1(i)- Run curl command and save th output into the index.html file
+command- curl --output index.html https://aws.amazon.com/
+
+1(ii)- Check the content of index.html
+command- cat index.html
+
+2-What is CP command?
+ans- CP command is used to copy one file to other file and copy one or more then one files to the directories.
+2(i)- Create 2 files named file1.txt & file2.txt and at the same level create one directory named as custom
+commands - touch file1.txt file2.txt
+	     mkdir custom
+2(ii)- Copy file1.txt and file2.txt into the custom directory
+command- cp file1.txt custom/
+	  cp file2.txt custom/
+	  cp file1.txt file2.txt custom/ (we can also do in this way to)
+3- What is Chmod commad?
+ans- Chmod command is used to change the permission(mode) of the files and directories.
+there are three type of permissions - 1- read 2- write 3-execute  
+
+3(i)- Create multiple text files and directories and check theit permissions given to users, groups and others .
+command - touch t1.txt
+	   touch t2.txt
+	   touch t3.txt 
+	   mkdir task
+	    ls -l    //to check the permissions of the files and directories
+3(ii)- Change the permission of one of the files where users should get read, write and execute, Groups should get only Read, and on the other hand,
+          other should get none
+command- chmod 740 file1.txt
+	ls -l  //to check if permissions are chenged or not
+3(iii)- Check with chmod 777, chmod 400 and chmod 600
+ans-  chmod 777 - this will give all the permissions to all three (user, Groups and others)
+           chmod 400- this will give all the permissions to the user but no permission to the Group and others
+           chmod 600- this will give read, write permission to the user and no permission to the Group and Others
+permission critaria -- r  w  x     r-4   w-2  e-1
+	   	if 7 is there it means r w e all the permissions like (4+2+1)
+		if 4 is there it means only r is allowed (4+0+0)
+
+EXERCISE 6: Learn and practice on a commonly used text editor for CLI
+Task:
+1- What is Nano?
+ans- GNU nano is an easy to use command line text editor for Unix and Linux operating systems. 
+It includes all the basic functionality you’d expect from a regular text editor, like syntax highlighting, multiple buffers, search and replace with regular expression support, spellchecking, UTF-8 encoding, and more.
+
+1(i)- Invoke nano editor 
+command- just type nano to the terminal and use ctr+X to exit
+
+1(ii)- use nano to modify any file and save the content.
+command- nano demo.txt     //use ctr+s to save and ctr+x to exit
+
+2- What is VI editor?
+ans- The VI editor is the most popular and classic text editor in the Linux family. Below, are some reasons which make it a widely used editor –
+
+1) It is available in almost all Linux Distributions
+
+2) It works the same across different platforms and Distributions
+
+3) It is user-friendly. Hence, millions of Linux users love it and use it for their editing needs
+
+Nowadays, there are advanced versions of the vi editor available, 
+and the most popular one is VIM which is Vi Improved.
+
+2(i)- Invoke vi editor
+command- vim 
+
+2(ii)- Open a file with vi editor in insert mode 
+command- vim demo.txt
+	  press 'i' to insert 
+
+
+Exercise 7: Research the following concepts
+Task:
+
+1- What is Root User?
+ans- The root is the user name or account that by default has access to all commands and files on a Linux or other Unix-like operating system. 
+It is also referred to as the root account, root user, and the superuser.
+
+2-Root Directory vs Home Directory
+ans- The Linux home directory is a directory for a particular user of the system and consists of individual files. 
+It is also referred to as the login directory. This is the first place that occurs after logging into a Linux system. It is automatically created as "/home" for each user in the directory'. 
+
+ROOT Directory- The root directory is the topmost level of the system drive. It is denoted by a slash '/'. No user other than the root user can change the settings of the entire system. 
+The admin has access to make any changes in the files and settings. The admin can create a user.In the Linux file system, everything comes under the root directory.
+ HOME Directory- The home directory is a subdirectory of the root directory.t is denoted by '~' and has path "/users/username".  Any user having a home directory cannot create a user.
+
+3- What is the etc in Linux?
+ans-people want to keep some files which can be a config file or a data file or a socket file or some other files. 
+So they implemented a folder to keep all these files in it and they named it as /etc(As said earlier etcetera). As time passed the meaning of this folder has changed but not the name “etc”. 
+Now /etc folder means a central location for all your configuration files are located and this can be treated as nerve centre of your Linux/Unix machine.
+
+4- What is the bin ?
+ans- 	
+/bin is a standard subdirectory of the root directory in Unix-like operating systems that 
+contains the executable (i.e., ready to run) programs that must be available in order to attain minimal functionality for the purposes of booting (i.e., starting) and repairing a system.	
+
+5-What is CRONTAB ?
+ans- Cron is named after Greek word “Chronos” that is used for time. It is a system process that will automatically perform tasks as per the specific schedule. It is a set of commands that are used for running regular scheduling tasks. Crontab stands for “cron table”. It allows to use job scheduler, which is known as cron to execute tasks.
+          Crontab is also the name of the program, which is used to edit that schedule. It is driven by a crontab file, a config file that indicates shell commands to run periodically for the specific schedule.
+	
+6- What is grep command?
+ans- he grep command supports many functionalities. Users can select a functionality of their choice by setting the right flags or arguments.
+ In this shot, we go through the most frequently used arguments for grep.
+
+7 - what is awk command?
+ans-) we do such operations using awk command
+Scans a file line by line 
+ Splits each input line into fields 
+ Compares input line/fields to pattern 
+ Performs action(s) on matched lines 
+
+
