@@ -1,3 +1,4 @@
+
 Exercise 2:  Execute each command and later save each command in a text file.
 
 Task:
@@ -259,4 +260,6 @@ Scans a file line by line
  Compares input line/fields to pattern 
  Performs action(s) on matched lines 
 
+
+end of the file
 
